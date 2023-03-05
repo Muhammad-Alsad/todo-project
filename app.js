@@ -1,21 +1,34 @@
 var skip= confirm("do you wanat to skip the welcoming alert ?");
 
-if (skip == false){
+let myArr =[];
+var userName ;
+var gender;
+var age;
 
-    alert("Welcome to my page !!");
-
-    var userName = prompt("Please enter your name !");
-    console.log(userName);
-    var gender =prompt("what is your gender (Male/ Female)")
-    
-    var age = prompt("Enter your age ")
+function getName(){
+    //debugger;
+    userName = prompt("Please enter your name !");
+    if(userName == ''){
+        return 'invalid';
+    }else{
+        return userName;
+    }
+}
+function getAge(){
+    //debugger;
+    age =prompt("Enter your age ");
     if(age <=0 ){
         alert ("you age should not be less or equal than 0");
-        prompt("enter your age again!")
-    }else if(age >0 ){
-        alert("your age is "+age);
+       getAge();
+    }else{
+        return age;
     }
-    //debugger
+
+}
+
+function getGender(name){
+    //debugger;
+    gender =prompt("what is your gender (Male/ Female)");
     if( gender == "male" || gender =="Male"){
         alert ("Welcome to my page  Mr " +userName );
     }else if (gender =="female" || gender =="female"){
@@ -23,7 +36,52 @@ if (skip == false){
     }else{
         alert("Welcome to my page " +userName)
     }
-   }
+}
+function justQuestions(){
+    //debugger;
+    var questionOne=prompt("did you like My website ?");
+    if (questionOne ==""){
+             questionOne ="invlidString!";
+    }{
+        myArr[0]=questionOne;
+    }
+
+    var questionTwo=prompt("did you finish your tasks today ?");
+    if (questionTwo ==""){
+                 questionTwo ="invlidString!";
+                 
+             }{
+                myArr[1]=questionTwo;
+
+             }
+    var questionThree=prompt("did you know how to program ?");
+    if (questionThree ==""){
+                questionThree ="invlidString!";
+     }{
+        myArr[2]=questionThree;
+     }
+     return myArr;
+}
+
+function printArray(Arr){
+    for(let i =0;i<Arr.length;i++){
+        console.log(Arr[i]);
+    }
+}
+function welcomeMessage(){
+    //debugger;
+    if (skip ==false){
+        getName();
+        getAge();
+        getGender(userName);
+        justQuestions();
+        printArray(myArr);
+    }
+}{
+    console.log("Client skip the welcoming alert!!");
+}
+welcomeMessage();
+
 
 
 
